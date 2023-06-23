@@ -1,0 +1,25 @@
+import csv
+import statistics
+
+def calculate_average(data_set):
+  """Calculates the average of the data set."""
+  total = 0
+  count = len(data_set)
+  for value in data_set:
+    total += value
+  return total / count
+
+def main():
+  """Main function."""
+  with open('qbr.csv', 'r') as csvfile:
+    reader = csv.reader(csvfile, delimiter=',')
+    next(reader, None)  # Skip header
+    data_set = []
+    for row in reader:
+      data_set.append(float(row[0]))
+
+    average = calculate_average(data_set)
+    print('The average QBR is:', average)
+
+if __name__ == '__main__':
+  main()
